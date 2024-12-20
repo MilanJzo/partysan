@@ -4,9 +4,9 @@ import { persist } from 'zustand/middleware';
 const useAppstate = create(
     persist(
         (set) => ({
-            user: "It's a me Mario!",
+            user: "It's a me Mario! (Guest)",
             setUser: (user) => set({ user: user }),
-            logOut: () => set({ user: "Guest" }),
+            logOut: () => set({ user: "It's a me Mario! (Guest)" }),
 
             userTags: [],
             setUserTags: (tags) => set({ userTags: tags }),

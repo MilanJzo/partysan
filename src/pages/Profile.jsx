@@ -48,7 +48,7 @@ function Profile() {
 				></Button>
 			</div>
 
-			<div className="h-full flex flex-col gap-4 md:flex-row md:overflow-hidden">
+			<div className="h-full flex flex-col gap-4 lg:flex-row lg:overflow-hidden">
 				<div className="w-full p-4 flex flex-col gap-2 items-center rounded-md bg-zinc-200 dark:bg-zinc-800 relative">
 					<h1 className="w-fit h-fit text-2xl">Your Tags</h1>
 					<Button
