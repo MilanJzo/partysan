@@ -6,7 +6,7 @@ const useAppstate = create((set) => ({
 //   removeAllBears: () => set({ bears: 0 }),
 //   updateBears: (newBears) => set({ bears: newBears }),
 
-    user: "Guest",
+    user: "It's a me Mario!",
     setUser: (user) => set({ user: user }),
     logOut: () => set({ user: "Guest" }),
 
