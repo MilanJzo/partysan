@@ -6,7 +6,7 @@ function Navigation() {
 
 	return (
 		<div className="w-full px-10 pt-4">
-			<div className="w-full flex justify-between items-center p-4 rounded-md bg-zinc-800">
+			<div className="w-full flex justify-between items-center p-4 rounded-md bg-zinc-200 dark:bg-zinc-800">
 				<div className="flex gap-10 font-bold text-xl">
 					<Link to="/">Home</Link>
 					<Link to="/events">Events</Link>

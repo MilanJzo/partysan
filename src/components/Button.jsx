@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 const Button = ({ action, text, style }) => {
 	return (
 		<button
-			className={"px-2 py-1 dark:text-white dark:bg-gray-600 rounded-md font-serif" + " " + style}
+			className={"px-2 py-1 bg-zinc-400 dark:bg-gray-600 rounded-md font-serif" + " " + style}
 			onClick={action}
 		>
 			{text}

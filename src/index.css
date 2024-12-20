@@ -4,9 +4,20 @@
 
 :root {
 	--tw-bg-opacity: 1;
-	background-color: rgb(24 24 27 / var(--tw-bg-opacity, 1)) /* #3f3f46 */;
+	background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1)) /* #3f3f46 */;
 }
 
-.specific-h {
+.page-content-h {
 	height: calc(100% - 80px);
+}
+
+.container-h {
+	height: calc(100% - 32px);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--tw-bg-opacity: 1;
+		background-color: rgb(24 24 27 / var(--tw-bg-opacity, 1)) /* #3f3f46 */;
+	}
 }

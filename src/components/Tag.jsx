@@ -4,7 +4,7 @@ const Button = ({ text, action, remove }) => {
 	return (
 		<button
 			onClick={action}
-			className="w-fit h-fit flex gap-2 px-3 py-1 rounded-md bg-zinc-200 dark:bg-zinc-700"
+			className="w-fit h-fit flex gap-2 px-3 py-1 rounded-md bg-zinc-300 dark:bg-zinc-700 text-nowrap"
 		>
 			{text}{" "}
 			{remove ? (
