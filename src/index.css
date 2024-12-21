@@ -15,9 +15,21 @@
 	height: calc(100% - 32px);
 }
 
+.marker-popup .leaflet-popup-content-wrapper,
+.marker-popup .leaflet-popup-tip {
+	--tw-bg-opacity: 1;
+	background-color: rgb(212 212 216 / var(--tw-bg-opacity, 1));
+}
+
 @media (prefers-color-scheme: dark) {
 	:root {
 		--tw-bg-opacity: 1;
 		background-color: rgb(24 24 27 / var(--tw-bg-opacity, 1)) /* #3f3f46 */;
+	}
+
+	.marker-popup .leaflet-popup-content-wrapper,
+	.marker-popup .leaflet-popup-tip {
+		--tw-bg-opacity: 1;
+		background-color: rgb(63 63 70 / var(--tw-bg-opacity, 1));
 	}
 }
