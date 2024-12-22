@@ -12,20 +12,22 @@ function Profile() {
 	const setUser = useAppstate((state) => state.setUser);
 	const userTags = useAppstate((state) => state.userTags);
 	const addUserTag = useAppstate((state) => state.addUserTag);
+	const setUserTags = useAppstate((state) => state.setUserTags);
 	const removeUserTag = useAppstate((state) => state.removeUserTag);
 	const removeAllUserTags = useAppstate((state) => state.removeAllUserTags);
+	const removeAllUserEvents = useAppstate((state) => state.removeAllUserEvents);
 
 	const tags = useMemo(() => {
 		let tags = [];
 		Object.keys(genreData).forEach((key) => {
 			genreData[key].forEach((tag) => {
-				if (!tags.find((entry) => entry === tag) && !userTags.find((entry) => entry === tag)) {
+				if (!tags.find((entry) => entry === tag)) {
 					tags.push(tag);
 				}
 			});
 		});
 		return tags;
-	}, [userTags]);
+	}, []);
 
 	return (
 		<div className="w-full page-content-h p-10 flex flex-col gap-4 items-center text-black dark:text-white font-serif">
@@ -40,52 +42,74 @@ function Profile() {
 					onChange={(e) => setUser(e.target.value)}
 				/>
 				<Button
+					danger
 					text={"LogOut"}
 					action={() => {
 						removeAllUserTags();
+						removeAllUserEvents();
 						logout();
 					}}
 				></Button>
 			</div>
 
 			<div className="h-full flex flex-col gap-4 lg:flex-row lg:overflow-hidden">
-				<div className="w-full p-4 flex flex-col gap-2 items-center rounded-md bg-zinc-200 dark:bg-zinc-800 relative">
-					<h1 className="w-fit h-fit text-2xl">Your Tags</h1>
-					<Button
-						style="absolute top-4 right-4"
-						text={"clear Tags"}
-						action={() => {
-							removeAllUserTags();
-						}}
-					></Button>
-					<div className="w-fit flex flex-wrap gap-2 justify-center md:overflow-scroll">
-						{userTags.map((tag, idx) => {
-							return (
-								<Tag
-									key={idx}
-									text={tag}
-									action={() => {
-										removeUserTag(tag);
-									}}
-									remove
-								></Tag>
-							);
-						})}
-					</div>
-				</div>
+				<div className="w-full pt-4 flex flex-col gap-2 items-center rounded-md relative">
+					<h1 className="w-fit h-fit text-2xl">Tell us what you like</h1>
+					<div className="absolute top-4 right-4 flex gap-2">
+						<Button
+							style={userTags.length > 0 ? "" : "opacity-50"}
+							text={"clear Tags"}
+							action={() => {
+								removeAllUserTags();
+							}}
+							// disabled={userTags.length > 0}
+						></Button>
 
-				<div className="w-full p-4 flex flex-col gap-2 items-center rounded-md bg-zinc-200 dark:bg-zinc-800">
-					<h1 className="w-fit h-fit text-2xl">All Tags</h1>
-					<div className="w-fit flex flex-wrap gap-2 justify-center md:overflow-scroll">
-						{tags.map((tag, idx) => {
+						<Button
+							style={userTags.length >= tags.length ? "opacity-50" : ""}
+							text={"select All"}
+							action={() => {
+								let newTags = [];
+								tags.forEach((tag) => {
+									if (!userTags.includes(tag)) {
+										newTags.push(tag);
+									}
+								});
+								setUserTags([...userTags, ...newTags]);
+							}}
+							// disabled={userTags.length >= tags.length}
+						></Button>
+					</div>
+
+					<div className="w-full pr-4 flex flex-wrap gap-4 justify-center md:overflow-scroll">
+						{Object.keys(genreData).map((key, idx) => {
+							let categoryEntries = genreData[key];
+
 							return (
-								<Tag
-									key={idx}
-									text={tag}
-									action={() => {
-										addUserTag(tag);
-									}}
-								></Tag>
+								<>
+									{categoryEntries.length > 0 ? (
+										<div
+											key={idx}
+											className="w-full p-4 flex flex-wrap gap-2 rounded-md bg-zinc-200 dark:bg-zinc-800"
+										>
+											<h2 className="w-full text-xl">{key}</h2>
+											{categoryEntries.map((tag, idx) => {
+												return (
+													<Tag
+														key={idx}
+														text={tag}
+														highlight={userTags.includes(tag)}
+														action={() => {
+															userTags.includes(tag) ? removeUserTag(tag) : addUserTag(tag);
+														}}
+													></Tag>
+												);
+											})}
+										</div>
+									) : (
+										<></>
+									)}
+								</>
 							);
 						})}
 					</div>

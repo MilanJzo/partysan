@@ -1,10 +1,12 @@
 import PropTypes from "prop-types";
 
-const Button = ({ text, action, remove }) => {
+const Button = ({ text, action, remove, highlight }) => {
 	return (
 		<button
 			onClick={action}
-			className="w-fit h-fit flex gap-2 px-3 py-1 rounded-md bg-zinc-300 dark:bg-zinc-700 text-nowrap"
+			className={
+				"w-fit h-fit flex gap-2 px-3 py-1 rounded-md text-nowrap" + (highlight ? " bg-zinc-400 dark:bg-zinc-600" : " bg-zinc-300 dark:bg-[#313131]")
+			}
 		>
 			{text}{" "}
 			{remove ? (
@@ -34,6 +36,7 @@ Button.propTypes = {
 	action: PropTypes.func,
 	text: PropTypes.string,
 	remove: PropTypes.bool,
+	highlight: PropTypes.bool,
 };
 
 export default Button;

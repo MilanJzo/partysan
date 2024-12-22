@@ -13,6 +13,7 @@
     "@fontsource/big-shoulders-text": "^5.1.0",
     "@fontsource/el-messiri": "^5.1.0",
     "leaflet": "^1.9.4",
+    "partysan": "file:",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-leaflet": "^5.0.0",
