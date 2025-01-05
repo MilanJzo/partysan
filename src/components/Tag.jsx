@@ -5,7 +5,8 @@ const Button = ({ text, action, remove, highlight }) => {
 		<button
 			onClick={action}
 			className={
-				"w-fit h-fit flex gap-2 px-3 py-1 rounded-md text-nowrap" + (highlight ? " bg-zinc-400 dark:bg-zinc-600" : " bg-zinc-300 dark:bg-[#313131]")
+				"w-fit h-fit flex gap-2 px-3 py-1 rounded-md text-nowrap hover:scale-[1.15] hover:shadow-lg hover:shadow-zinc-700 dark:hover:shadow-lg dark:hover:shadow-zinc-900 " +
+				(highlight ? " bg-zinc-400 dark:bg-zinc-600" : " bg-zinc-300 dark:bg-[#353535]")
 			}
 		>
 			{text}{" "}

@@ -29,8 +29,34 @@ function Profile() {
 		return tags;
 	}, []);
 
+	const genreColorsDark = [
+		"dark:text-[#85b4f9]",
+		"dark:text-[#6dbcf9]",
+		"dark:text-[#56c3f5]",
+		"dark:text-[#41caed]",
+		"dark:text-[#36cfe2]",
+		"dark:text-[#3bd4d3]",
+		"dark:text-[#4dd7c3]",
+		"dark:text-[#63d9b3]",
+		"dark:text-[#7cdba3]",
+		"dark:text-[#94db94]",
+	];
+
+	const genreColorsLight = [
+		"text-[#161d32]",
+		"text-[#0d253c]",
+		"text-[#002d43]",
+		"text-[#003547]",
+		"text-[#003d46]",
+		"text-[#004543]",
+		"text-[#004c3d]",
+		"text-[#005334]",
+		"text-[#1d5929]",
+		"text-[#395d1d]",
+	];
+
 	return (
-		<div className="w-full page-content-h p-10 flex flex-col gap-4 items-center text-black dark:text-white font-serif">
+		<div className="w-full h-full p-[40px] pt-[124px] flex flex-col gap-4 items-center text-black dark:text-white font-serif">
 			<div className="rounded-md w-full h-fit py-2 px-4 flex gap-2 bg-zinc-200 dark:bg-zinc-800">
 				<label htmlFor="username">Username:</label>
 				<input
@@ -81,12 +107,15 @@ function Profile() {
 						></Button>
 					</div>
 
-					<div className="w-full pr-4 flex flex-wrap gap-4 justify-center md:overflow-scroll">
+					<div className="w-full flex flex-wrap gap-4 justify-center md:overflow-y-scroll">
 						{Object.keys(genreData).map((key, idx) => {
 							let categoryEntries = genreData[key];
 
 							return (
-								<>
+								<div
+									key={idx}
+									className={genreColorsLight[idx] + " " + genreColorsDark[idx] + " w-full"}
+								>
 									{categoryEntries.length > 0 ? (
 										<div
 											key={idx}
@@ -109,7 +138,7 @@ function Profile() {
 									) : (
 										<></>
 									)}
-								</>
+								</div>
 							);
 						})}
 					</div>

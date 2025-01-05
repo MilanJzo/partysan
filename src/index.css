@@ -18,6 +18,8 @@
 ::-webkit-scrollbar {
 	width: 6px;
 	height: 6px;
+
+	background-color: transparent;
 }
 
 ::-webkit-scrollbar-track {
@@ -45,5 +47,12 @@
 	.marker-popup .leaflet-popup-tip {
 		--tw-bg-opacity: 1;
 		background-color: rgb(39 39 42 / var(--tw-bg-opacity, 1));
+	}
+
+	.leaflet-layer,
+	.leaflet-control-zoom-in,
+	.leaflet-control-zoom-out,
+	.leaflet-control-attribution {
+		filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
 	}
 }
