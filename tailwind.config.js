@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
         fontFamily: {
-            'sans': ['Big Shoulders Text', 'sans-serif'],
+            'sans': ['Roboto', 'sans-serif'],
             'serif': ['El Messiri', 'serif']
         },
     },

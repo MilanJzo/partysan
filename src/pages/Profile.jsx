@@ -56,7 +56,7 @@ function Profile() {
 	];
 
 	return (
-		<div className="w-full h-full p-[40px] pt-[124px] flex flex-col gap-4 items-center text-black dark:text-white font-serif">
+		<div className="w-full h-full p-[40px] pt-[124px] flex flex-col gap-4 items-center text-black dark:text-white">
 			<div className="rounded-md w-full h-fit py-2 px-4 flex gap-2 bg-zinc-200 dark:bg-zinc-800">
 				<label htmlFor="username">Username:</label>
 				<input

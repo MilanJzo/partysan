@@ -1,6 +1,6 @@
 function About() {
 	return (
-		<div className="w-full h-fit p-10 pt-[124px] flex flex-col gap-4 items-center text-black dark:text-white font-serif">
+		<div className="w-full h-fit p-10 pt-[124px] flex flex-col gap-4 items-center text-black dark:text-white">
 			<div className="w-8/12 h-fit flex flex-col gap-4">
 				<h3 className="text-3xl font-bold">About Us</h3>
 				<p>

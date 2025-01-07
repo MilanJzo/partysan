@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router";
 
 import "@fontsource/big-shoulders-text";
 import "@fontsource/el-messiri";
+import "@fontsource/roboto"; // Defaults to weight 400.
 
 import "./index.css";
 import PageLayout from "./layouts/PageLayout";

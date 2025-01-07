@@ -41,7 +41,7 @@ function Events() {
 	const center = [50.941, 6.958]; // de Dömsche
 
 	return (
-		<div className="w-full h-full p-10 pt-[124px] flex flex-col gap-4 items-center text-black dark:text-white font-serif">
+		<div className="w-full h-full p-10 pt-[124px] flex flex-col gap-4 items-center text-black dark:text-white">
 			<div className="w-full h-full p-4 rounded-md bg-zinc-200 dark:bg-zinc-800">
 				<div className="w-full h-fit p-3 flex gap-2 overflow-x-scroll">
 					{userTags.length > 0

@@ -5,8 +5,8 @@ function Navigation() {
 	const user = useAppstate((state) => state.user);
 
 	return (
-		<div className="fixed top-0 right-0 w-full px-10 py-4 bg-zinc-100 dark:bg-zinc-900 z-10">
-			<div className="w-full flex justify-between items-center p-4 rounded-md bg-zinc-200 dark:bg-gradient-to-r dark:from-slate-700 dark:to-slate-800">
+		<div className="fixed top-0 right-0 w-full px-10 py-4 bg-white dark:bg-zinc-900 z-10">
+			<div className="w-full flex justify-between items-center p-4 rounded-md bg-gradient-to-r from-slate-700 to-slate-800 text-white">
 				<div className="flex items-end gap-10 font-bold text-xl">
 					<Link
 						to="/"

@@ -6,7 +6,7 @@ function Home() {
 	const removeUserEvent = useAppstate((state) => state.removeUserEvent);
 
 	return (
-		<div className="w-full h-fit p-10 pt-[124px] flex flex-col gap-4 items-center text-black dark:text-white font-serif">
+		<div className="w-full h-fit p-10 pt-[124px] flex flex-col gap-4 items-center text-black dark:text-white">
 			{userEvents.length > 0
 				? userEvents.map((event, idx) => {
 						return (
