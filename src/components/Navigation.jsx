@@ -7,15 +7,25 @@ function Navigation() {
 	return (
 		<div className="fixed top-0 right-0 w-full px-10 py-4 bg-white dark:bg-zinc-900 z-10">
 			<div className="w-full flex justify-between items-center p-4 rounded-md bg-gradient-to-r from-slate-700 to-slate-800 text-white">
-				<div className="flex items-end gap-10 font-bold text-xl">
+				<div className="flex items-baseline gap-4 font-bold text-xl">
 					<Link
 						to="/"
-						className="text-3xl"
+						className={"text-3xl font-serif py-1 px-4 rounded-md hover:bg-slate-800"}
 					>
 						Partysan
 					</Link>
-					<Link to="/events">Events</Link>
-					<Link to="/info">Info</Link>
+					<Link
+						to="/events"
+						className="py-1 px-4 rounded-md hover:bg-slate-800"
+					>
+						Events
+					</Link>
+					<Link
+						to="/info"
+						className="py-1 px-4 rounded-md hover:bg-slate-800"
+					>
+						Info
+					</Link>
 				</div>
 
 				<Link
