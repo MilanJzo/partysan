@@ -12,6 +12,7 @@ import Events from "./pages/Events";
 import Info from "./pages/Info";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
+import About from "./pages/About";
 
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
@@ -33,6 +34,10 @@ createRoot(document.getElementById("root")).render(
 					<Route
 						path="/profile"
 						element={<Profile />}
+					/>
+					<Route
+						path="/about"
+						element={<About />}
 					/>
 				</Route>
 			</Routes>
