@@ -19,9 +19,6 @@ const useAppstate = create(
             addUserEvent: (event) => set((state) => ({ userEvents: [...state.userEvents, event] })),
             removeUserEvent: (event) => set((state) => ({ userEvents: state.userEvents.filter(e => e !== event) })),
             removeAllUserEvents: () => set({ userEvents: [] }),
-
-            path: "/",
-            setPath: (path) => set({ path: path }),
         }),
         {
             name: 'partysan-local-store',

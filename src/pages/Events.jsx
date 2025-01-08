@@ -93,6 +93,7 @@ function Events() {
 							<Marker
 								key={idx}
 								position={[event.latlon[0], event.latlon[1]]}
+								// className={events.includes(event) ? "bg-red-800" : ""}
 							>
 								<Popup className="marker-popup">
 									<div className="flex flex-col gap-2 min-w-[250px] text-black dark:text-white font-serif p-0 m-0">

@@ -1,8 +1,9 @@
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import useAppstate from "../ zuSTATE/appstate";
 
 function Navigation() {
 	const user = useAppstate((state) => state.user);
+	const location = useLocation();
 
 	return (
 		<div className="fixed top-0 right-0 w-full px-10 py-4 bg-white dark:bg-zinc-900 z-10">
@@ -10,19 +11,21 @@ function Navigation() {
 				<div className="flex items-baseline gap-4 font-bold text-xl">
 					<Link
 						to="/"
-						className={"text-3xl font-serif py-1 px-4 rounded-md hover:bg-slate-800"}
+						className={
+							"text-3xl font-serif py-1 px-4 hover:border-b-2 hover:border-white" + (location.pathname === "/" ? " border-b-2 border-white" : "")
+						}
 					>
 						Partysan
 					</Link>
 					<Link
 						to="/events"
-						className="py-1 px-4 rounded-md hover:bg-slate-800"
+						className={"py-1 px-4 hover:border-b-2 hover:border-white" + (location.pathname === "/events" ? " border-b-2 border-white" : "")}
 					>
 						Events
 					</Link>
 					<Link
 						to="/info"
-						className="py-1 px-4 rounded-md hover:bg-slate-800"
+						className={"py-1 px-4 hover:border-b-2 hover:border-white" + (location.pathname === "/info" ? " border-b-2 border-white" : "")}
 					>
 						Info
 					</Link>
@@ -30,7 +33,10 @@ function Navigation() {
 
 				<Link
 					to="/profile"
-					className="flex items-end gap-2"
+					className={
+						"py-1 px-4 flex items-end gap-2 hover:border-b-2 hover:border-white" +
+						(location.pathname === "/profile" ? " border-b-2 border-white" : "")
+					}
 				>
 					<p>{user}</p>
 					<svg
