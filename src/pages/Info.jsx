@@ -2,50 +2,47 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { useState } from "react";
 
 function Info() {
-	const [numToCheck, setNumToCheck] = useState(0);
 	const [isEvenData, setIsEvenData] = useState(null);
 
 	return (
 		<div className="w-full h-full p-10 pt-[124px] flex flex-col gap-4 items-center text-black dark:text-white">
 			<div>
 				<div className="p-4 rounded-md bg-zinc-200 dark:bg-zinc-800">
-					<h1>Is Number Even?</h1>
-					<div className="flex gap-4 items-center">
-						<div className="flex gap-4 items-center">
+					<h1 className="text-2xl font-serif">Is Number Even?</h1>
+					<div className="flex gap-4 items-center justify-center h-[75px]">
+						<div className="flex gap-4 relative">
 							<input
 								type="number"
-								className="w-full bg-transparent border-b border-black dark:border-white focus:outline-none font-bold"
+								className="w-[200px] h-[50px] bg-transparent border-b border-black dark:border-white focus:outline-none font-bold [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
 								onChange={(e) => {
-									setNumToCheck(e.target.value);
-									setIsEvenData(null);
-								}}
-							/>
-							<button
-								onClick={() => {
-									fetch("https://api.isevenapi.xyz/api/iseven/" + numToCheck + "/")
+									fetch("https://api.isevenapi.xyz/api/iseven/" + e.target.value + "/")
 										.then((response) => response.json())
 										.then((data) => {
 											setIsEvenData(data);
 										});
+									setIsEvenData(null);
 								}}
-							>
-								check
-							</button>
+								placeholder={0}
+							/>
+							{isEvenData &&
+								(isEvenData.iseven ? (
+									<DotLottieReact
+										src="https://lottie.host/3e2eddff-394f-4dcb-bb64-bf86b0bdddab/XA80rDoTlh.lottie"
+										className="absolute top-[-12px] right-[-18px]"
+										width={60}
+										height={60}
+										autoplay
+									/>
+								) : (
+									<DotLottieReact
+										src="https://lottie.host/79e90b74-d229-4212-bf41-3c482139cfeb/HCvRuunM1q.lottie"
+										className="absolute top-0 right-0"
+										width={50}
+										height={50}
+										autoplay
+									/>
+								))}
 						</div>
-						{isEvenData &&
-							(isEvenData.iseven ? (
-								<DotLottieReact
-									src="https://lottie.host/ecf4c0d6-d105-44ca-9b94-59aa5bdb8372/QjubNA52G5.lottie"
-									className="w-[150px] h-[75px]"
-									autoplay
-								/>
-							) : (
-								<DotLottieReact
-									src="https://lottie.host/5620609b-b34c-40cb-8587-3881f3c2a69e/n7OoKQ4MjJ.lottie"
-									className="w-[100px] h-[50px]"
-									autoplay
-								/>
-							))}
 					</div>
 				</div>
 			</div>
