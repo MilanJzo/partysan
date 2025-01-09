@@ -96,8 +96,8 @@ function Events() {
 								// className={events.includes(event) ? "bg-red-800" : ""}
 							>
 								<Popup className="marker-popup">
-									<div className="flex flex-col gap-2 min-w-[250px] text-black dark:text-white font-serif p-0 m-0">
-										<h2 className="rounded-md p-2 text-xl bg-zinc-300 dark:bg-zinc-700">{event.title}</h2>
+									<div className="flex flex-col gap-2 min-w-[250px] text-black dark:text-white p-0 m-0">
+										<h2 className="rounded-md p-2 text-xl bg-zinc-300 dark:bg-zinc-700 font-serif">{event.title}</h2>
 										<p
 											style={{ margin: 0 }}
 											className="rounded-md p-2 text-base bg-zinc-300 dark:bg-zinc-700"

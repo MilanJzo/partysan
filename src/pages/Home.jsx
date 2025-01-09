@@ -14,7 +14,7 @@ function Home() {
 								key={idx}
 								className="w-full h-fit p-4 flex flex-col gap-2 rounded-md bg-zinc-200 dark:bg-zinc-800"
 							>
-								<h1 className="text-2xl">{event.title}</h1>
+								<h1 className="text-2xl font-serif">{event.title}</h1>
 								<p>{event.location}</p>
 								<p>{event.place}</p>
 								<div className="rounded-md flex justify-between gap-2">
