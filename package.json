@@ -16,6 +16,7 @@
     "@fontsource/noto-sans": "^5.1.1",
     "@fontsource/roboto": "^5.1.1",
     "@lottiefiles/dotlottie-react": "^0.12.1",
+    "axios": "^1.7.9",
     "leaflet": "^1.9.4",
     "partysan": "file:",
     "react": "^19.0.0",

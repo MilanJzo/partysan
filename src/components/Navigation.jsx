@@ -34,7 +34,7 @@ function Navigation() {
 				<Link
 					to="/profile"
 					className={
-						"py-1 px-4 flex items-end gap-2 hover:border-b-2 hover:border-white" +
+						"py-1 px-4 min-w-fit flex items-end gap-2 hover:border-b-2 hover:border-white" +
 						(location.pathname === "/profile" ? " border-b-2 border-white" : "")
 					}
 				>
