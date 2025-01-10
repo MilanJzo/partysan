@@ -7,12 +7,11 @@
 	background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1)) /* #3f3f46 */;
 }
 
-.page-content-h {
-	height: calc(100% - 80px);
-}
-
-.container-h {
-	height: calc(100% - 32px);
+.API-grid {
+	display: grid;
+	grid-template-columns: 300px 1fr;
+	grid-template-rows: min-content 1fr;
+	gap: 1rem;
 }
 
 ::-webkit-scrollbar {
@@ -39,6 +38,39 @@
 
 .marker-filter {
 	filter: hue-rotate(180deg);
+}
+
+/* From Uiverse.io by vinodjangid07 */
+#checkbox {
+	display: none;
+}
+
+.switch {
+	/* position: relative; */
+	width: fit-content;
+	padding: 10px 20px;
+	background-color: rgb(46, 46, 46);
+	border-radius: 50px;
+	z-index: 1;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	color: white;
+	font-size: 0.9em;
+	font-weight: 600;
+	transition: all 0.3s;
+}
+#checkbox:checked + .switch {
+	background-color: rgb(51 65 85);
+}
+
+@media screen and (max-width: 768px) {
+	.API-grid {
+		grid-template-columns: 1fr;
+		grid-template-rows: none;
+	}
 }
 
 @media (prefers-color-scheme: dark) {

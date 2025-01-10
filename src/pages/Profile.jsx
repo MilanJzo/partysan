@@ -69,13 +69,14 @@ function Profile() {
 				/>
 				<Button
 					danger
-					text={"LogOut"}
 					action={() => {
 						removeAllUserTags();
 						removeAllUserEvents();
 						logout();
 					}}
-				></Button>
+				>
+					LogOut
+				</Button>
 			</div>
 
 			<div className="h-full flex flex-col gap-4 lg:flex-row lg:overflow-hidden">
@@ -84,16 +85,16 @@ function Profile() {
 					<div className="absolute top-4 right-4 flex gap-2">
 						<Button
 							style={userTags.length > 0 ? "" : "opacity-50"}
-							text={"clear Tags"}
 							action={() => {
 								removeAllUserTags();
 							}}
 							// disabled={userTags.length > 0}
-						></Button>
+						>
+							clear Tags
+						</Button>
 
 						<Button
 							style={userTags.length >= tags.length ? "opacity-50" : ""}
-							text={"select All"}
 							action={() => {
 								let newTags = [];
 								tags.forEach((tag) => {
@@ -104,7 +105,9 @@ function Profile() {
 								setUserTags([...userTags, ...newTags]);
 							}}
 							// disabled={userTags.length >= tags.length}
-						></Button>
+						>
+							select All
+						</Button>
 					</div>
 
 					<div className="w-full flex flex-wrap gap-4 justify-center md:overflow-y-scroll">
