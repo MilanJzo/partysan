@@ -6,7 +6,7 @@ const ThirdAPI = () => {
 
 	const fetchHotGames = () => {
 		console.log(new Date().getDate());
-		const url = `https://tradestie.com/api/v1/apps/reddit`;
+		const url = ``;
 		fetch(url).then((response) => setHotBoardgames({ games: response.data }));
 	};
 

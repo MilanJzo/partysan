@@ -6,6 +6,7 @@ const AdviceSlipAPI = () => {
 	const [adviceSlipData, setAdviceSlipData] = useState(null);
 
 	const fetchAdvice = () => {
+		console.log("fetching advice ...");
 		const url = `https://api.adviceslip.com/advice?timestamp=${new Date().getTime()}`;
 		fetch(url)
 			.then((response) => response.json())

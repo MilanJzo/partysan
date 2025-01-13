@@ -63,7 +63,6 @@ function Profile() {
 					id="username"
 					type="text"
 					className="w-full bg-transparent border-b border-black dark:border-white focus:outline-none font-bold"
-					placeholder="e.g. John Doe"
 					value={user}
 					onChange={(e) => setUser(e.target.value)}
 				/>
