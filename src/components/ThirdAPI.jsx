@@ -1,22 +1,18 @@
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const ThirdAPI = () => {
-	const [hotBoardgames, setHotBoardgames] = useState(null);
-
-	const fetchHotGames = () => {
-		console.log(new Date().getDate());
-		const url = ``;
-		fetch(url).then((response) => setHotBoardgames({ games: response.data }));
+	const fetchAPIData = () => {
+		// ....
 	};
 
 	useEffect(() => {
-		fetchHotGames();
+		fetchAPIData();
 	}, []);
 
 	return (
-		<div className="w-full h-full span-2 flex flex-col p-4 rounded-md bg-zinc-200 dark:bg-zinc-800">
-			<h1 className="text-2xl font-serif">Coming soon</h1>
+		<div className="w-full h-full span-2 flex flex-col items-center p-4 rounded-md bg-zinc-200 dark:bg-zinc-800">
+			<h1 className="text-2xl font-serif">Coming Soon&trade;</h1>
 		</div>
 	);
 };

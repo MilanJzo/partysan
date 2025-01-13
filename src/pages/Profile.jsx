@@ -132,6 +132,7 @@ function Profile() {
 														highlight={userTags.includes(tag)}
 														action={() => {
 															userTags.includes(tag) ? removeUserTag(tag) : addUserTag(tag);
+															console.log(userTags);
 														}}
 													></Tag>
 												);
