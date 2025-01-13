@@ -147,18 +147,20 @@ function Events() {
 										{userEvents.includes(event) ? (
 											<Button
 												danger
-												text={"Cancel Booking"}
 												action={() => {
 													removeUserEvent(event);
 												}}
-											></Button>
+											>
+												Cancel Booking
+											</Button>
 										) : (
 											<Button
-												text={"Book this Event"}
 												action={() => {
 													addUserEvent(event);
 												}}
-											></Button>
+											>
+												Book this Event
+											</Button>
 										)}
 									</div>
 								</Popup>

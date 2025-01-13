@@ -24,11 +24,12 @@ function Home() {
 								<div className="w-full flex justify-end gap-2">
 									<Button
 										danger
-										text={"Cancel Event"}
 										action={() => {
 											removeUserEvent(event);
 										}}
-									></Button>
+									>
+										Cancel Event
+									</Button>
 								</div>
 							</div>
 						);
