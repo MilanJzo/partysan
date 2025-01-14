@@ -81,7 +81,7 @@ function Events() {
 				<MapContainer
 					center={center}
 					zoom={13}
-					scrollWheelZoom={false}
+					scrollWheelZoom={true}
 					className="w-full h-[calc(100%-59px)] rounded-md dark:bg-black"
 				>
 					<TileLayer
