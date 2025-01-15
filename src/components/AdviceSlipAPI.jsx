@@ -18,7 +18,7 @@ const AdviceSlipAPI = () => {
 	}, []);
 
 	return (
-		<div className="w-full h-full flex flex-col p-4 items-center justify-between rounded-md relative bg-zinc-200 dark:bg-zinc-800">
+		<div className="w-full h-full flex flex-col p-4 gap-2 items-center justify-between rounded-md relative bg-zinc-200 dark:bg-zinc-800">
 			<h1 className="text-2xl font-serif">Important Advice</h1>
 			{adviceSlipData ? <p>{adviceSlipData.slip.advice}</p> : <p>loading advice ...</p>}
 			<div className="h-fit w-fit flex gap-2">
