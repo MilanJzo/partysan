@@ -1,7 +1,7 @@
-import { useMemo } from "react";
 import useAppstate from "../ zuSTATE/appstate";
 
-import genreData from "../../data/genres.json";
+import tagData from "../../data/genres.json";
+import eventData from "../../data/events.json";
 
 import Tag from "../components/Tag";
 import Button from "../components/Button";
@@ -17,19 +17,34 @@ function Profile() {
 	const removeAllUserTags = useAppstate((state) => state.removeAllUserTags);
 	const removeAllUserEvents = useAppstate((state) => state.removeAllUserEvents);
 
-	const tags = useMemo(() => {
-		let tags = [];
-		Object.keys(genreData).forEach((key) => {
-			genreData[key].forEach((tag) => {
-				if (!tags.find((entry) => entry === tag)) {
-					tags.push(tag);
-				}
-			});
-		});
-		return tags;
-	}, []);
+	let tags = [];
+	let structuredTags = {};
 
-	const genreColorsDark = [
+	// sanitizing tags from genres.json
+	Object.keys(tagData).forEach((key) => {
+		tagData[key].forEach((tag) => {
+			if (!tags.includes(tag)) {
+				tags.push(tag);
+				if (!structuredTags[key]) {
+					structuredTags[key] = [];
+				}
+				structuredTags[key].push(tag);
+			}
+		});
+	});
+
+	// sanitizing and adding tags from events.json not included in genres.json
+	structuredTags["other from events"] = [];
+	eventData.events.forEach((event) => {
+		event.tags.forEach((tag) => {
+			if (!tags.includes(tag)) {
+				tags.push(tag);
+				structuredTags["other from events"].push(tag);
+			}
+		});
+	});
+
+	const colorsDark = [
 		"dark:text-[#85b4f9]",
 		"dark:text-[#6dbcf9]",
 		"dark:text-[#56c3f5]",
@@ -40,9 +55,10 @@ function Profile() {
 		"dark:text-[#63d9b3]",
 		"dark:text-[#7cdba3]",
 		"dark:text-[#94db94]",
+		"dark:text-[#b4d984]",
 	];
 
-	const genreColorsLight = [
+	const colorsLight = [
 		"text-[#161d32]",
 		"text-[#0d253c]",
 		"text-[#002d43]",
@@ -53,6 +69,7 @@ function Profile() {
 		"text-[#005334]",
 		"text-[#1d5929]",
 		"text-[#395d1d]",
+		"text-[#5f5f12]",
 	];
 
 	return (
@@ -101,46 +118,42 @@ function Profile() {
 										newTags.push(tag);
 									}
 								});
+								eventData.events.forEach((event) => {
+									event.tags.forEach((tag) => {
+										if (!userTags.includes(tag) && !newTags.includes(tag)) {
+											newTags.push(tag);
+										}
+									});
+								});
 								setUserTags([...userTags, ...newTags]);
 							}}
-							// disabled={userTags.length >= tags.length}
 						>
 							select All
 						</Button>
 					</div>
 
 					<div className="w-full flex flex-wrap gap-4 justify-center md:overflow-y-scroll">
-						{Object.keys(genreData).map((key, idx) => {
-							let categoryEntries = genreData[key];
-
+						{Object.keys(structuredTags).map((key, idx) => {
 							return (
 								<div
 									key={idx}
-									className={genreColorsLight[idx] + " " + genreColorsDark[idx] + " w-full"}
+									className={
+										"w-full p-4 flex flex-wrap gap-2 rounded-md bg-zinc-200 dark:bg-zinc-800 " + colorsLight[idx] + " " + colorsDark[idx]
+									}
 								>
-									{categoryEntries.length > 0 ? (
-										<div
-											key={idx}
-											className="w-full p-4 flex flex-wrap gap-2 rounded-md bg-zinc-200 dark:bg-zinc-800"
-										>
-											<h2 className="w-full text-xl">{key}</h2>
-											{categoryEntries.map((tag, idx) => {
-												return (
-													<Tag
-														key={idx}
-														text={tag}
-														highlight={userTags.includes(tag)}
-														action={() => {
-															userTags.includes(tag) ? removeUserTag(tag) : addUserTag(tag);
-															console.log(userTags);
-														}}
-													></Tag>
-												);
-											})}
-										</div>
-									) : (
-										<></>
-									)}
+									<h2 className="w-full text-xl">{key}</h2>
+									{structuredTags[key].map((tag, idx) => {
+										return (
+											<Tag
+												key={idx}
+												text={tag}
+												highlight={userTags.includes(tag)}
+												action={() => {
+													userTags.includes(tag) ? removeUserTag(tag) : addUserTag(tag);
+												}}
+											></Tag>
+										);
+									})}
 								</div>
 							);
 						})}

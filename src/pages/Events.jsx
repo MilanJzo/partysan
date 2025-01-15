@@ -1,14 +1,14 @@
-import useAppstate from "../ zuSTATE/appstate";
-
 import "leaflet/dist/leaflet.css";
 
-import Tag from "../components/Tag";
+import useAppstate from "../ zuSTATE/appstate";
 
 import eventData from "../../data/events.json";
 
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
+
 import Button from "../components/Button";
+import Tag from "../components/Tag";
 
 function Events() {
 	const userTags = useAppstate((state) => state.userTags);
@@ -16,34 +16,28 @@ function Events() {
 	const addUserEvent = useAppstate((state) => state.addUserEvent);
 	const removeUserEvent = useAppstate((state) => state.removeUserEvent);
 
-	const [highlightedTags] = useState([]);
-	const [events, setEvents] = useState(eventData.events);
+	const [highlightedTags, setHighlightedTags] = useState([]);
 
 	const filteredEvents = useMemo(() => {
-		if (userTags.length > 0) {
-			let newEvents = [];
-			userTags.forEach((tag) => {
-				newEvents = newEvents.concat(
-					eventData.events.filter((event) => {
-						return event.tags.includes(tag);
-					})
-				);
-			});
-			return newEvents;
+		if (userTags.length <= 0) {
+			return eventData.events;
 		}
-		return eventData.events;
-	}, [userTags]);
 
-	useEffect(() => {
-		setEvents(filteredEvents);
-	}, [filteredEvents]);
+		if (highlightedTags.length <= 0) {
+			return eventData.events.filter((event) => {
+				return event.tags.some((tag) => userTags.includes(tag));
+			});
+		}
 
-	const center = [50.941, 6.958]; // de Dömsche
+		return eventData.events.filter((event) => {
+			return event.tags.some((tag) => highlightedTags.includes(tag));
+		});
+	}, [userTags, highlightedTags]);
 
 	return (
 		<div className="w-full h-full p-10 pt-[124px] flex flex-col gap-4 items-center text-black dark:text-white">
 			<div className="w-full h-full p-4 rounded-md bg-zinc-200 dark:bg-zinc-800">
-				<div className="w-full h-fit p-3 flex gap-2 overflow-x-scroll">
+				<div className="w-full h-fit pb-3 flex gap-2 overflow-x-scroll">
 					{userTags.length > 0
 						? userTags.map((tag, idx) => {
 								return (
@@ -52,23 +46,13 @@ function Events() {
 										text={tag}
 										action={() => {
 											if (highlightedTags.includes(tag)) {
-												highlightedTags.splice(highlightedTags.indexOf(tag), 1);
-											} else {
-												highlightedTags.push(tag);
-											}
-
-											if (highlightedTags.length > 0) {
-												let newEvents = [];
-												highlightedTags.forEach((tag) => {
-													newEvents = newEvents.concat(
-														eventData.events.filter((event) => {
-															return event.tags.includes(tag);
-														})
-													);
+												const newHighlightedTags = highlightedTags.filter((highlightedTag) => {
+													return highlightedTag !== tag;
 												});
-												setEvents(newEvents);
+												setHighlightedTags(newHighlightedTags);
 											} else {
-												setEvents(filteredEvents);
+												const newHighlightedTags = [...highlightedTags, tag];
+												setHighlightedTags(newHighlightedTags);
 											}
 										}}
 										highlight={highlightedTags.includes(tag)}
@@ -79,21 +63,20 @@ function Events() {
 				</div>
 
 				<MapContainer
-					center={center}
+					center={[50.941, 6.958]} // de dömsche
 					zoom={13}
 					scrollWheelZoom={true}
-					className="w-full h-[calc(100%-59px)] rounded-md dark:bg-black"
+					className="w-full h-[calc(100%-2.75rem)] rounded-md dark:bg-black"
 				>
 					<TileLayer
 						attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 						url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 					/>
-					{events.map((event, idx) => {
+					{filteredEvents.map((event, idx) => {
 						return (
 							<Marker
 								key={idx}
 								position={[event.latlon[0], event.latlon[1]]}
-								// className={events.includes(event) ? "bg-red-800" : ""}
 							>
 								<Popup className="marker-popup">
 									<div className="flex flex-col gap-2 min-w-[250px] text-black dark:text-white p-0 m-0">
