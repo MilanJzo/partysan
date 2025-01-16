@@ -34,12 +34,12 @@ function Profile() {
 	});
 
 	// sanitizing and adding tags from events.json not included in genres.json
-	structuredTags["other from events"] = [];
+	structuredTags["other (parsed from events)"] = [];
 	eventData.events.forEach((event) => {
 		event.tags.forEach((tag) => {
 			if (!tags.includes(tag)) {
 				tags.push(tag);
-				structuredTags["other from events"].push(tag);
+				structuredTags["other (parsed from events)"].push(tag);
 			}
 		});
 	});
