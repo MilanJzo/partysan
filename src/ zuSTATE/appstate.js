@@ -19,6 +19,10 @@ const useAppstate = create(
             addUserEvent: (event) => set((state) => ({ userEvents: [...state.userEvents, event] })),
             removeUserEvent: (event) => set((state) => ({ userEvents: state.userEvents.filter(e => e !== event) })),
             removeAllUserEvents: () => set({ userEvents: [] }),
+
+            dateFilter: new Date().toISOString(),
+            setDateFilter: (date) => set({ dateFilter: date }),
+            resetDateFilter: () => set({ dateFilter: new Date() }),
         }),
         {
             name: 'partysan-local-store',

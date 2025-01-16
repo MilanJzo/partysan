@@ -73,7 +73,7 @@ function Profile() {
 	];
 
 	return (
-		<div className="w-full h-full p-[40px] pt-[124px] flex flex-col gap-4 items-center text-black dark:text-white">
+		<div className="w-full h-fit p-[40px] pt-[124px] flex flex-col gap-4 items-center text-black dark:text-white">
 			<div className="rounded-md w-full h-fit py-2 px-4 flex gap-2 bg-zinc-200 dark:bg-zinc-800">
 				<label htmlFor="username">Username:</label>
 				<input
@@ -95,7 +95,7 @@ function Profile() {
 				</Button>
 			</div>
 
-			<div className="h-full flex flex-col gap-4 lg:flex-row lg:overflow-hidden">
+			<div className="h-fit flex flex-col gap-4">
 				<div className="w-full pt-4 flex flex-col gap-2 items-center rounded-md relative">
 					<h1 className="w-fit h-fit text-2xl">Tell us what you like</h1>
 					<div className="absolute top-4 right-4 flex gap-2">
@@ -132,7 +132,7 @@ function Profile() {
 						</Button>
 					</div>
 
-					<div className="w-full flex flex-wrap gap-4 justify-center md:overflow-y-scroll">
+					<div className="w-full flex flex-wrap gap-4 justify-center">
 						{Object.keys(structuredTags).map((key, idx) => {
 							return (
 								<div
