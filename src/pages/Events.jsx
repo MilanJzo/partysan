@@ -85,10 +85,10 @@ function Events() {
 	});
 
 	return (
-		<div className="w-full h-full p-10 pt-[124px] flex flex-col gap-4 items-center text-black dark:text-white">
+		<div className="w-full h-full p-[40px] pt-[10px] md:pt-[40px] flex flex-col gap-4 items-center text-black dark:text-white">
 			<div className="w-full h-full p-4 rounded-md bg-zinc-200 dark:bg-zinc-800">
 				<div className="w-full h-fit flex gap-4 relative">
-					<div className="w-full h-fit pb-3 pr-[50px] flex gap-2 overflow-x-scroll">
+					<div className="w-full h-fit pb-3 pr-[50px] flex gap-2 overflow-x-scroll text-nowrap">
 						{userTags.length > 0
 							? userTags.map((tag, idx) => {
 									return (

@@ -1,7 +1,7 @@
 function About() {
 	return (
-		<div className="w-full h-fit p-10 pt-[124px] flex flex-col gap-4 items-center text-black dark:text-white">
-			<div className="w-8/12 h-fit flex flex-col gap-4">
+		<div className="w-full h-fit px-10 md:py-10 flex flex-col gap-4 items-center text-black dark:text-white">
+			<div className="md:w-8/12 lg:w-1/2 h-fit flex flex-col gap-4">
 				<h3 className="text-3xl font-bold">About Us</h3>
 				<p>
 					Welcome to Partysan, your ultimate ally in the mission to uncover the best local parties and events. Whether you’re looking to rally your

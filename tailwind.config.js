@@ -10,6 +10,16 @@ export default {
             'sans': ['Karla', 'sans-serif'],
             'serif': ['El Messiri', 'serif']
         },
+        animation: {
+        typewriter: "typewriter 2s steps(11) forwards"
+        },
+        keyframes: {
+            typewriter: {
+            to: {
+                left: "100%"
+            }
+            }
+        },
     },
   },
   plugins: [],

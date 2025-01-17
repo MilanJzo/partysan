@@ -1,14 +1,35 @@
 import { useState } from "react";
 
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { useEffect } from "react";
 
 const IsEvenAPI = () => {
 	const [showJson, setShowJson] = useState(false);
 	const [isEvenData, setIsEvenData] = useState(null);
 
+	const names = ["Even Steven", "Oddly Enough", "Evenly Yours", "Oddball", "Evening Star", "Odd Job", "Even If I Try", "Even-Stein", "Parity Party"];
+	const [name, setName] = useState(names[Math.floor(Math.random() * names.length)]);
+
+	useEffect(() => {
+		const interval = setInterval(() => {
+			const newName = names[Math.floor(Math.random() * names.length)];
+			for (let i = 0; i < newName.length; i++) {
+				setTimeout(() => {
+					setName(newName.substring(0, i + 1));
+				}, 100 * i);
+			}
+		}, 5000);
+		return () => clearInterval(interval);
+	}, [names]);
+
 	return (
 		<div className="w-full flex flex-col p-4 gap-2 rounded-md bg-zinc-200 dark:bg-zinc-800">
-			<h1 className="text-2xl font-serif">Evenity-Checker</h1>
+			<input
+				className="text-2xl font-serif relative bg-transparent focus:outline-none pointer-events-none"
+				disabled
+				value={name}
+			/>
+
 			<div className="flex flex-col gap-4">
 				<div className="flex gap-4 relative">
 					<input

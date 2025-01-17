@@ -16,6 +16,7 @@ function Profile() {
 	const removeUserTag = useAppstate((state) => state.removeUserTag);
 	const removeAllUserTags = useAppstate((state) => state.removeAllUserTags);
 	const removeAllUserEvents = useAppstate((state) => state.removeAllUserEvents);
+	const resetDateFilter = useAppstate((state) => state.resetDateFilter);
 
 	let tags = [];
 	let structuredTags = {};
@@ -73,7 +74,7 @@ function Profile() {
 	];
 
 	return (
-		<div className="w-full h-fit p-[40px] pt-[124px] flex flex-col gap-4 items-center text-black dark:text-white">
+		<div className="w-full h-fit p-[40px] pt-[10px] md:pt-[40px] flex flex-col gap-4 items-center text-black dark:text-white">
 			<div className="rounded-md w-full h-fit py-2 px-4 flex gap-2 bg-zinc-200 dark:bg-zinc-800">
 				<label htmlFor="username">Username:</label>
 				<input
@@ -88,6 +89,7 @@ function Profile() {
 					action={() => {
 						removeAllUserTags();
 						removeAllUserEvents();
+						resetDateFilter();
 						logout();
 					}}
 				>
