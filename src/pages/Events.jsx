@@ -3,7 +3,7 @@ import L from "leaflet";
 
 import useAppstate from "../ zuSTATE/appstate";
 
-import eventData from "../../data/events.json";
+import eventData from "../assets/events.json";
 
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { useState, useMemo } from "react";

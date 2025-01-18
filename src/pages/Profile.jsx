@@ -1,7 +1,7 @@
 import useAppstate from "../ zuSTATE/appstate";
 
-import tagData from "../../data/genres.json";
-import eventData from "../../data/events.json";
+import tagData from "../assets/genres.json";
+import eventData from "../assets/events.json";
 
 import Tag from "../components/Tag";
 import Button from "../components/Button";
